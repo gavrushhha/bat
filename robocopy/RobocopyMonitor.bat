@@ -1,8 +1,4 @@
 @echo off
-:: ============================================================================
-:: RobocopyMonitor.bat — зеркало папки: рекурсивное копирование и отслеживание изменений
-:: Конфиг: ..\config\Config.ini (SourceFolder, DestinationFolder)
-:: ============================================================================
 setlocal EnableDelayedExpansion
 set "SOURCE="
 set "DEST="
@@ -51,13 +47,11 @@ echo.
 if not exist "%LOG%" type nul > "%LOG%"
 echo [%date% %time%] Started: "%SOURCE%" -^> "%DEST%" >> "%LOG%"
 
-:: /E — подкаталоги включая пустые, /MON:1 /MOT:1 — отслеживание изменений и проверка раз в минуту
-:: /R:3 /W:5 — повторы и пауза, /LOG+ /TEE — лог и консоль
 robocopy "%SOURCE%" "%DEST%" /E /MON:1 /MOT:1 /R:3 /W:5 /LOG+:"%LOG%" /TEE
 if errorlevel 8 echo [%date% %time%] Robocopy had errors. >> "%LOG%"
 echo Done.
 exit /b 0
 
 :usage
-echo Usage: %~nx0 Config.ini   [или "C:\Source" "D:\Dest"]
+echo Usage: %~nx0 Config.ini   or: %~nx0 "C:\Source" "D:\Dest"
 exit /b 1
