@@ -47,7 +47,12 @@ echo.
 if not exist "%LOG%" type nul > "%LOG%"
 echo [%date% %time%] Started: "%SOURCE%" -^> "%DEST%" >> "%LOG%"
 
-robocopy "%SOURCE%" "%DEST%" /E /PURGE /MON:1 /MOT:1 /R:3 /W:5 /LOG+:"%LOG%" /TEE
+echo Initial mirror (remove extras on dest)...
+robocopy "%SOURCE%" "%DEST%" /MIR /R:3 /W:5 /LOG+:"%LOG%" /TEE
+if errorlevel 8 echo [%date% %time%] Robocopy had errors. >> "%LOG%"
+
+echo Monitoring...
+robocopy "%SOURCE%" "%DEST%" /MIR /MON:1 /MOT:1 /R:3 /W:5 /LOG+:"%LOG%" /TEE
 if errorlevel 8 echo [%date% %time%] Robocopy had errors. >> "%LOG%"
 echo Done.
 exit /b 0
