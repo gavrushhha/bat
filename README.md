@@ -9,11 +9,12 @@
    * DestinationFolder (куда копируем), например:   ``DestinationFolder=C:\Users\sofja\Desktop\winlav\``
    * Сохраните файл.
 4. Запуск скрипта
-   * Откройте cmd. (терминал, командную строку)
-   * Перейдите в папку проекта scripts, где лежит RunRobocopyMonitor.bat, например:   ``cd C:\путь\к\scripts``
-   * Запустите:   ``RunRobocopyMonitor.bat``
-5. Остановка
-   * Нажмите Ctrl+C в окне консоли, где запущен скрипт.
+   * Откройте cmd от имени администратора (терминал, командную строку)
+   * Перейдите в папку проекта scripts
+   * Запустите:
+     * ``sc.exe create "RobocopyMirrorService2" start= auto obj= LocalSystem binPath= "\"C:\scripts2\dist\RobocopyService\RobocopyService.exe\""``
+     * ``sc.exe start "RobocopyMirrorService2"``
+     * ``sc.exe query "RobocopyMirrorService2"`` - проверка статуса работы службы
 
 
 ## Скрипт:
