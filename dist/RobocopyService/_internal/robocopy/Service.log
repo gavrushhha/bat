@@ -1,0 +1,5 @@
+[INFO] Starting StartServiceCtrlDispatcherW
+[INFO] ServiceMain entered
+[INFO] Starting batch: C:\Users\vnj64\OneDrive\Рабочий стол\python_task\bat\dist\RobocopyService\_internal\RunRobocopyMonitor.bat
+[WARN] Batch process exited unexpectedly
+[INFO] Stopping batch process
